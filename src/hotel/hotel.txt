@@ -1,0 +1,15 @@
+REQUERIMIENTOS DE HOTEL
+
+INSTRUCCIONES: En este bloc de notas encontrar las metas del modelo que le toco 
+desarrollar, colocar una ✅ cuando su persona termino de desarrollar dicha meta,
+ademas que podra escribir en la sección de Observaciones, temas 
+que le quisiera hacer llegar al Scrum Master, suerte y exitos en su desarrollo.
+
+
+
+MODEL 
+CONTROLLER 
+VALIDACIONES 
+ROUTES 
+
+🔴OBSERVACIONES:
