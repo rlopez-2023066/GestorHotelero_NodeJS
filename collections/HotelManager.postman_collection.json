@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "406714ee-9235-48b0-a38c-381d6b6abfef",
+		"_postman_id": "a0fe186d-f111-4613-8fc8-3dd21444b8cd",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956967"
+		"_exporter_id": "37956954"
 	},
 	"item": [
 		{
@@ -85,12 +85,12 @@
 							"urlencoded": [
 								{
 									"key": "userLogin",
-									"value": "dflores",
+									"value": "rlopez",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Dfl@re2007",
+									"value": "Alfred@88917",
 									"type": "text"
 								}
 							]
@@ -253,7 +253,174 @@
 		},
 		{
 			"name": "Hotel",
-			"item": []
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "asdkfjasdjfjasdlkfj;lkasdjfas",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "popo y caca",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "popo y caquita",
+									"type": "text"
+								},
+								{
+									"key": "telephone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/hotel/addHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"hotel",
+								"addHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODExOTYxZjYzODEzMzE0NDE1YjMyZTAiLCJ1c2VybmFtZSI6InJsb3BleiIsIm5hbWUiOiJSZW5lIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ1OTgzNDQ1LCJleHAiOjE3NDU5OTQyNDV9.m8NZJ68TFboeFkjd_UAQLmokSqD10lQ9RlQRQ-FBMtk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "mierda puta",
+									"type": "text"
+								},
+								{
+									"key": "direction",
+									"value": "alfredo cerote",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "dejame comer y bañarme",
+									"type": "text"
+								},
+								{
+									"key": "telephone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/hotel/updateHotel/681197e85615af9d66c33cda",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"hotel",
+								"updateHotel",
+								"681197e85615af9d66c33cda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/hotel/deleteHotel/6811a259226599fd1e716702",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"hotel",
+								"deleteHotel",
+								"6811a259226599fd1e716702"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/hotel/getHotels",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"hotel",
+								"getHotels"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Evento",
@@ -273,7 +440,162 @@
 		},
 		{
 			"name": "Servicio",
-			"item": []
+			"item": [
+				{
+					"name": "listServices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/service/getService",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"getService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postService",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "sillas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "sillas",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "26",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811a649ce71b8e0f58e536c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/service/addService",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"addService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutService",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "mesas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "una mesa",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "36",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811a649ce71b8e0f58e536c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/service/updateSerive/6811a65ace71b8e0f58e5371",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"updateSerive",
+								"6811a65ace71b8e0f58e5371"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteService",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/service/deleteService/6811a65ace71b8e0f58e5371",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"deleteService",
+								"6811a65ace71b8e0f58e5371"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Informe",
