@@ -7,7 +7,7 @@ que le quisiera hacer llegar al Scrum Master, suerte y exitos en su desarrollo.
 
 
 
-MODEL ✅
+MODEL 
 CONTROLLER 
 VALIDACIONES 
 ROUTES 
