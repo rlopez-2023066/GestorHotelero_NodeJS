@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4879b2ba-27cd-4360-9d17-bdc3072fc9c4",
+		"_postman_id": "b23f8f1b-5eca-47b2-b4dc-0a534e07376c",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956963"
+		"_exporter_id": "37956984"
 	},
 	"item": [
 		{
@@ -657,7 +657,143 @@
 		},
 		{
 			"name": "Habitación",
-			"item": []
+			"item": [
+				{
+					"name": "Buscar Habitaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/rooms/getRoom",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"getRoom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Habitación",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "no_room",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Individual",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hola",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "busy",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811bac65bd1f4b3ac13fb37",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRoom",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "capacity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/6811bbb95bd1f4b3ac13fb3b",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"6811bbb95bd1f4b3ac13fb3b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Habitación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/delete/6811bbb95bd1f4b3ac13fb3b",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"delete",
+								"6811bbb95bd1f4b3ac13fb3b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Factura",
