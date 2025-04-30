@@ -9,7 +9,10 @@ import helmet from 'helmet'
 import cors from 'cors'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from '../src/user/user.routes.js'
-
+import hotelRoutes from '../src/hotel/hotel.routes.js'
+import serviceRoutes from '../src/servicio/servicio.routes.js'
+import eventRoutes from '../src/evento/event.routes.js'
+import roomRoutes from '../src/habitacion/habitacion.routes.js'
 const configs = (app) => {
     app.use(express.json())
     app.use(express.urlencoded({extended: false}))
@@ -25,6 +28,10 @@ const routes = (app) => {
     //Rutas de Autenticación
     app.use(authRoutes)
     app.use('/v1/user', userRoutes)
+    app.use('/v1/hotel',hotelRoutes)
+    app.use('/v1/service',serviceRoutes)
+    app.use('/v1/events', eventRoutes)
+    app.use('/v1/rooms',roomRoutes)
     
 
 }
