@@ -85,3 +85,47 @@ export const updatePasswordValidator = [
         .withMessage('Enter your password again'),
     validateErrors
 ]
+
+//Validaciones para agregar Hotel
+export const registerHotelValidator = [
+    body('name')
+        .notEmpty()
+        .isLength({min: 8, max: 50 })
+        .withMessage('Enter name again'),
+    body('direction')
+        .notEmpty()
+        .isLength({min: 5, max: 90})
+        .withMessage('Enter direction again'),
+    body('category')
+        .notEmpty(),
+    body('description')
+        .notEmpty()
+        .isLength({min: 10, max: 200})
+        .withMessage('Enter description again'),
+    body('telephone')
+        .notEmpty()
+        .isMobilePhone(),
+    validateErrorsWithoutFiles
+]
+
+//Validciones para actualizar el Hotel
+export const updateHotelValidator = [
+    body('name')
+        .optional()
+        .notEmpty(),
+    body('direction')
+        .optional()
+        .notEmpty(),
+    body('category')
+        .optional()
+        .notEmpty(),
+    body('description')
+        .optional()
+        .notEmpty(),
+    body('telephone')
+        .optional()
+        .notEmpty(),
+    validateErrorsWithoutFiles
+]
+
+
