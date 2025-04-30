@@ -1,5 +1,5 @@
 // model of event
-const mongoose = require('mongoose');
+import mongoose, {Schema, model} from "mongoose";
 
 const EventSchema = new mongoose.Schema({
   description: {
@@ -38,4 +38,4 @@ const EventSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Event', EventSchema);
+export default model('Event', EventSchema);
