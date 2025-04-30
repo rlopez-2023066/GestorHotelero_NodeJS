@@ -3,7 +3,7 @@
 import Hotel from './hotel.model.js'
 
 
-export const addUser = async(req,res) =>{
+export const addHotel = async(req,res) =>{
     try {
         const data = req.body
 

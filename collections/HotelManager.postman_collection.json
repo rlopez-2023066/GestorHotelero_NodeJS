@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c84463dd-bc2c-43cd-b33a-1c53bfeef0b8",
+		"_postman_id": "a0fe186d-f111-4613-8fc8-3dd21444b8cd",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956959"
+		"_exporter_id": "37956954"
 	},
 	"item": [
 		{
@@ -261,7 +261,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODExOTYxZjYzODEzMzE0NDE1YjMyZTAiLCJ1c2VybmFtZSI6InJsb3BleiIsIm5hbWUiOiJSZW5lIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ1OTgzNDQ1LCJleHAiOjE3NDU5OTQyNDV9.m8NZJ68TFboeFkjd_UAQLmokSqD10lQ9RlQRQ-FBMtk",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -270,7 +270,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "popo pipi",
+									"value": "asdkfjasdjfjasdlkfj;lkasdjfas",
 									"type": "text"
 								},
 								{
@@ -379,7 +379,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:2002/v1/hotel/deleteHotel/681197e85615af9d66c33cda",
+							"raw": "localhost:2002/v1/hotel/deleteHotel/6811a259226599fd1e716702",
 							"host": [
 								"localhost"
 							],
@@ -388,7 +388,7 @@
 								"v1",
 								"hotel",
 								"deleteHotel",
-								"681197e85615af9d66c33cda"
+								"6811a259226599fd1e716702"
 							]
 						}
 					},
@@ -440,7 +440,162 @@
 		},
 		{
 			"name": "Servicio",
-			"item": []
+			"item": [
+				{
+					"name": "listServices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/service/getService",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"getService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postService",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "sillas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "sillas",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "26",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811a649ce71b8e0f58e536c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/service/addService",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"addService"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutService",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "mesas",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "una mesa",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "36",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811a649ce71b8e0f58e536c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/service/updateSerive/6811a65ace71b8e0f58e5371",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"updateSerive",
+								"6811a65ace71b8e0f58e5371"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteService",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/service/deleteService/6811a65ace71b8e0f58e5371",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"service",
+								"deleteService",
+								"6811a65ace71b8e0f58e5371"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Informe",

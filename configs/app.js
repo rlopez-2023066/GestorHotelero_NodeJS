@@ -10,6 +10,7 @@ import cors from 'cors'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from '../src/user/user.routes.js'
 import hotelRoutes from '../src/hotel/hotel.routes.js'
+import serviceRoutes from '../src/servicio/servicio.routes.js'
 
 const configs = (app) => {
     app.use(express.json())
@@ -27,6 +28,7 @@ const routes = (app) => {
     app.use(authRoutes)
     app.use('/v1/user', userRoutes)
     app.use('/v1/hotel',hotelRoutes)
+    app.use('/v1/service',serviceRoutes)
     
 
 }
