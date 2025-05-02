@@ -5,6 +5,7 @@ import {
 
 
 import User from '../src/user/user.model.js'
+import Hotel from '../src/hotel/hotel.model.js'
 
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
@@ -45,5 +46,13 @@ export const findUser = async(id)=>{
     }catch(err){
         console.error(err)
         return false
+    }
+}
+
+export const existName = async(name,actualName)=>{
+    const alreadyName = await Hotel.findOne({name})
+    if(alreadyName && alreadyName._id != actualName){
+        console.error(`Name's Hotel ${name} is already taken`)
+        throw new Error (`Name's Hotel ${name} is already taken`);
     }
 }
