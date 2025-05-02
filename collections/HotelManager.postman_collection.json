@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a0fe186d-f111-4613-8fc8-3dd21444b8cd",
+		"_postman_id": "b23f8f1b-5eca-47b2-b4dc-0a534e07376c",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956954"
+		"_exporter_id": "37956984"
 	},
 	"item": [
 		{
@@ -424,7 +424,232 @@
 		},
 		{
 			"name": "Evento",
-			"item": []
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/events/events/65d1e2f3a4b5c6d7e8f9a0b1",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"events",
+								"events",
+								"65d1e2f3a4b5c6d7e8f9a0b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "POpo",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ano",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "ano",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Finished",
+									"type": "text"
+								},
+								{
+									"key": "services",
+									"value": "6811af17f8fdcaea4c669953",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/events/events",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"events",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "POpo",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Escremento",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Pene",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Finished",
+									"type": "text"
+								},
+								{
+									"key": "services",
+									"value": "6811af17f8fdcaea4c669953",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/events/events/6811af82f8fdcaea4c669958",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"events",
+								"events",
+								"6811af82f8fdcaea4c669958"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "POpo",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Escremento",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Pene",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Finished",
+									"type": "text"
+								},
+								{
+									"key": "services",
+									"value": "6811af17f8fdcaea4c669953",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/events/events/6811af82f8fdcaea4c669958",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"events",
+								"events",
+								"6811af82f8fdcaea4c669958"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/events/events/65d1e2f3a4b5c6d7e8f9a0b1",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"events",
+								"events",
+								"65d1e2f3a4b5c6d7e8f9a0b1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Reservación",
@@ -432,7 +657,143 @@
 		},
 		{
 			"name": "Habitación",
-			"item": []
+			"item": [
+				{
+					"name": "Buscar Habitaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/rooms/getRoom",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"getRoom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agregar Habitación",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "no_room",
+									"value": "12",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Individual",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hola",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "busy",
+									"type": "text"
+								},
+								{
+									"key": "sales",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "hotel",
+									"value": "6811bac65bd1f4b3ac13fb37",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRoom",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "capacity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/6811bbb95bd1f4b3ac13fb3b",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"6811bbb95bd1f4b3ac13fb3b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Habitación",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:2002/v1/rooms/delete/6811bbb95bd1f4b3ac13fb3b",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"rooms",
+								"delete",
+								"6811bbb95bd1f4b3ac13fb3b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Factura",
