@@ -5,7 +5,7 @@ import {
 
 
 import User from '../src/user/user.model.js'
-import Service from '../src/servicio/servicio.model.js'
+
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
 
@@ -15,7 +15,7 @@ export const existUsername = async(username, user) => {
     const alreadyUsername = await User.findOne({username})
     if(alreadyUsername && alreadyUsername._id != user._id){
         console.error(`Username ${username} is already taken`)
-        throw new Error (`Username ${username} is already taken`);
+        throw new Error (`Username ${username} is already taken`) 
     }
 }
 
@@ -24,14 +24,14 @@ export const existEmail = async(email, user) => {
     const alreadyEmail = await User.findOne({email})
     if(alreadyEmail && alreadyEmail._id != user._id){
         console.error(`Email ${email} is already taken`)
-        throw new Error (`Email ${email} is already taken`);
+        throw new Error (`Email ${email} is already taken`) 
     }
 }
 
 //No requiere el campo lleno
-export const notRequiredField = (field)=>{
-    if(field){
-        throw new Error(`${field} is not required`)
+export const notRequiredField = (value, { req, path }) => {
+    if (value !== undefined) {
+        throw new Error(`The field '${path}' should not be sent in the request body`)
     }
 }
 
@@ -47,12 +47,3 @@ export const findUser = async(id)=>{
         return false
     }
 }
-// Validate if service exists in DB
-export const serviceExists = async (id) => {
-    const service = await Service.findById(id)
-    if (!service) {
-      console.error(`Service with ID ${id} does not exist`)
-      throw new Error(`Service with ID ${id} does not exist`)
-    }
-  }
-  
