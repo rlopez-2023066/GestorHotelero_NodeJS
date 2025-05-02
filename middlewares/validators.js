@@ -9,6 +9,7 @@ import {
 
 import {
     existEmail,
+    existName,
     existUsername,
     notRequiredField
 } from '../utils/db.validators.js'
@@ -91,7 +92,8 @@ export const registerHotelValidator = [
     body('name')
         .notEmpty()
         .isLength({min: 8, max: 50 })
-        .withMessage('Enter name again'),
+        .withMessage('Enter name again')
+        .custom(existName),
     body('direction')
         .notEmpty()
         .isLength({min: 5, max: 90})
@@ -105,27 +107,35 @@ export const registerHotelValidator = [
     body('telephone')
         .notEmpty()
         .isMobilePhone(),
-    validateErrorsWithoutFiles
+    validateErrors
 ]
 
 //Validciones para actualizar el Hotel
 export const updateHotelValidator = [
     body('name')
         .optional()
-        .notEmpty(),
+        .notEmpty()
+        .withMessage('Enter a valid name')
+        .custom((name,{req})=> existName(name, req.params?.id)),
     body('direction')
         .optional()
-        .notEmpty(),
+        .notEmpty()
+        .withMessage('Enter a valid direction'),
     body('category')
         .optional()
-        .notEmpty(),
+        .notEmpty()
+        .withMessage('Enter a valid category'),
     body('description')
         .optional()
-        .notEmpty(),
+        .notEmpty()
+        .withMessage('Enter a valid description'),
     body('telephone')
         .optional()
-        .notEmpty(),
+        .notEmpty()
+        .withMessage('Enter a valid telephone'),
     validateErrorsWithoutFiles
 ]
+
+//Validaciones al eliminar
 
 
