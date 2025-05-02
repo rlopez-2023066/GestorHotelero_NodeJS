@@ -10,8 +10,7 @@ import {
 import {
     existEmail,
     existUsername,
-    notRequiredField,
-    serviceExists
+    notRequiredField
 } from '../utils/db.validators.js'
 
 /* Observación: Colocar comentario acerca de la Validación */
@@ -128,4 +127,50 @@ export const updateHotelValidator = [
         .notEmpty(),
     validateErrorsWithoutFiles
 ]
+
+//Validaciones para crear una reservación de Habitación 
+export const registerReservationValidator = [
+    body('room', 'Room cannot be empty')
+        .notEmpty(),
+    body('description', 'Description cannot be empty')
+        .notEmpty()
+        .isLength({min: 10, max: 200})
+        .withMessage('Enter description again'),
+    body('startTime', 'Start date cannot be empty')
+        .notEmpty()
+        .withMessage('Enter start date again'),
+    body('endTime', 'End date cannot be empty')
+        .notEmpty()
+        .withMessage('Enter end date again'),
+    validateErrors
+]
+
+//Validacion para actualizar la reservación de habitación
+export const updateReservationValidator = [
+    body('room')
+        .optional()
+        .notEmpty(),
+    body('description')
+        .optional()
+        .notEmpty(),
+    body('startTime')
+        .optional()
+        .notEmpty(),
+    body('endTime')
+        .optional()
+        .notEmpty(), 
+    validateErrorsWithoutFiles
+]
+
+export const registerEventValidator = [
+    body('room', 'Room cannot be empty')
+        .notEmpty(),
+    body('event', 'Event cannot be empty')
+        .notEmpty(),
+    validateErrors
+    
+]
+
+
+
 
