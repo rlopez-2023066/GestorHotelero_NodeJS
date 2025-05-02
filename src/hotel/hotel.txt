@@ -7,9 +7,9 @@ que le quisiera hacer llegar al Scrum Master, suerte y exitos en su desarrollo.
 
 
 
-MODEL 
-CONTROLLER 
-VALIDACIONES 
-ROUTES 
+MODEL ✅
+CONTROLLER (buscar por nombre, filtrar)✅
+VALIDACIONES ✅ nombre delete
+ROUTES ✅
 
 🔴OBSERVACIONES:
