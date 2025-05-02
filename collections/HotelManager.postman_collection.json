@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a258b9d0-5bd8-43af-9f8d-3a53c787dd68",
+		"_postman_id": "d9bcd17b-d6e0-4128-9e6d-190764973833",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956967"
+		"_exporter_id": "37956963"
 	},
 	"item": [
 		{
@@ -511,47 +511,16 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Cena de Graduación",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Cena y Fiesta",
-									"type": "text"
-								},
-								{
-									"key": "type",
-									"value": "Convivencia Familiar",
-									"type": "text"
-								},
-								{
-									"key": "startTime",
-									"value": "2024-02-15T18:00:00Z",
-									"type": "text"
-								},
-								{
-									"key": "endTime",
-									"value": "2024-02-15T18:00:00Z",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Cancelado",
-									"type": "text"
-								},
-								{
-									"key": "services",
-									"value": "68123d4b08234f5e35020746",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Cena De Graduación\",\r\n  \"description\": \"Solo un servicio agregado\",\r\n  \"type\": \"Conferencia\",\r\n  \"startTime\": \"2022-05-15T10:00:00Z\",\r\n  \"endTime\": \"2022-05-15T12:00:00Z\",\r\n  \"services\": [\r\n    {\r\n      \"serviceId\": \"68145d0312f6c38a0b712c35\"\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "localhost:2002/v1/events/updateEvent/681240fa58172238833a4c29",
+							"raw": "localhost:2002/v1/events/updateEvent/6814603b243ff2d21660b77d",
 							"host": [
 								"localhost"
 							],
@@ -560,7 +529,7 @@
 								"v1",
 								"events",
 								"updateEvent",
-								"681240fa58172238833a4c29"
+								"6814603b243ff2d21660b77d"
 							]
 						}
 					},
@@ -920,7 +889,10 @@
 							"name": "listReservationEventHotelId",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": ""
+								}
 							},
 							"response": []
 						}
@@ -1164,7 +1136,10 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -1172,7 +1147,10 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -1180,7 +1158,10 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
