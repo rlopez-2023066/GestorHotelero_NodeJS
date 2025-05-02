@@ -49,7 +49,7 @@ export const initServer = () => {
         configs(app)
         routes(app)
         app.listen(process.env.PORT)
-        console.log(`Servidor ejecutándose en el puerto ${process.env.PORT}`);
+        console.log(`Servidor ejecutándose en el puerto ${process.env.PORT}`) 
 
     }catch (error){
         
