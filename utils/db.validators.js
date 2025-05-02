@@ -10,7 +10,7 @@ import User from '../src/user/user.model.js'
 validador, para evitar problemas a futuros. */
 
 
-//Validar si el Username(Usuario) existe
+//Validar si el Username (Usuario) existe
 export const existUsername = async(username, user) => {
     const alreadyUsername = await User.findOne({username})
     if(alreadyUsername && alreadyUsername._id != user._id){
@@ -19,7 +19,7 @@ export const existUsername = async(username, user) => {
     }
 }
 
-//Validar si el Email(Correo) existe
+//Validar si el Email (Correo) existe
 export const existEmail = async(email, user) => {
     const alreadyEmail = await User.findOne({email})
     if(alreadyEmail && alreadyEmail._id != user._id){
