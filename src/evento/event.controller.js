@@ -5,9 +5,20 @@ import Service from "../servicio/servicio.model.js"
 export const createEvent = async (req, res) => {
     try {
       const data = req.body 
-  
+      
       const servicesArray = [] 
+      
+      const existingEvent = await Event.findOne({
+        startTime: data.startTime,
+        endTime: data.endTime
+      });
   
+      if (existingEvent) {
+        return res.status(400).send({
+          success: false,
+          message: 'An event with the same date and time already exists.'
+        })
+      } 
       for (const item of data.services) {
         const service = await Service.findById(item.serviceId) 
   
@@ -59,49 +70,76 @@ export const createEvent = async (req, res) => {
 
 //Update Event
 export const updateEvent = async (req, res) => {
-    try{
-        const { id } = req.params
-        const data = req.body
+  try {
+    const { id } = req.params
+    const data = req.body
 
-        //Validate that the service exists
-        if(!data.service){
-            const serviceExist = await Service.findById(data.services)
-            if(!serviceExist){
-                return res.status(404).send({
-                    success: false,
-                    message: 'Service not found'
-                })
-            }
-        }
-        //Update Event
-        const updateEvent = await Event.findByIdAndUpdate(
-            id,
-            data,
-            { new:true }
-        ).populate("services")
+    const existingEvent = await Event.findOne({
+      startTime: data.startTime,
+      endTime: data.endTime,
+      _id: { $ne: id } // excluir el mismo evento que se está actualizando
+    })
 
-        if(!updateEvent){
-            return res.status(404).send({
-                success: false,
-                message: 'Event not found and not updated'
-            })
-        }
-
-        return res.send({
-            success: true,
-            message: 'Event updated succesfully',
-            event: updateEvent
-        })
-    } catch (err){
-        console.error('General error', err) 
-        return res.status(500).send({
-            success: false,
-            message: 'General error',
-            err
-        })
+    if (existingEvent) {
+      return res.status(400).send({
+        success: false,
+        message: 'An event with the same date and time already exists.'
+      })
     }
-}
 
+    const servicesArray = []
+
+    for (const item of data.services) {
+      const service = await Service.findById(item.serviceId)
+
+      if (!service) {
+        return res.status(404).send({
+          success: false,
+          message: `Service not found`
+        })
+      }
+
+      if (service.amount < item.quantity) {
+        return res.status(400).send({
+          success: false,
+          message: `Not enough quantity for Service`
+        })
+      }
+
+      service.amount -= item.quantity
+      await service.save()
+
+      servicesArray.push({
+        serviceId: item.serviceId,
+        quantity: item.quantity,
+        price: service.price
+      })
+    }
+
+    data.services = servicesArray
+
+    const updatedEvent = await Event.findByIdAndUpdate(id, data, { new: true })
+    if (!updatedEvent) {
+      return res.status(404).send({
+        success: false,
+        message: 'Event not found and not updated'
+      })
+    }
+
+    return res.send({
+      success: true,
+      message: 'Event updated successfully',
+      event: updatedEvent
+    })
+  } catch (err) {
+    console.error('General error', err)
+    return res.status(500).send({
+      success: false,
+      message: 'General error',
+      err
+    })
+  }
+}
 //Delete Event
 export const deleteEvent = async (req, res) => {
     try {
