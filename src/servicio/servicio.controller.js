@@ -5,6 +5,7 @@ export const getAllServices = async (req,res) => {
     try {
         const {limit,skip}= req.query
         const service = await Service.find()
+        .populate('hotel')
         .skip(skip)
         .limit(limit)
 
