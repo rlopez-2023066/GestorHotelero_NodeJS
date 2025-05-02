@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Router } from "express" 
 
-import { updateHotelValidator, registerHotelValidator } from "../../middlewares/validators.js";
-import { addHotel, getAllHotels, updateHotel, deleteHotel } from "./hotel.controller.js";
-import { isAdmin, validateJwt } from "../../middlewares/validate.jwt.js";
+import { updateHotelValidator, registerHotelValidator } from "../../middlewares/validators.js" 
+import { addHotel, getAllHotels, updateHotel, deleteHotel } from "./hotel.controller.js" 
+import { isAdmin, validateJwt } from "../../middlewares/validate.jwt.js" 
 
 
 const api = Router()
