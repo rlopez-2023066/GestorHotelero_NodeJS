@@ -12,6 +12,7 @@ import {
     existUsername,
     notRequiredField
 } from '../utils/db.validators.js'
+import Service from '../src/servicio/servicio.model.js'
 
 /* Observación: Colocar comentario acerca de la Validación */
 
@@ -125,6 +126,53 @@ export const updateHotelValidator = [
     body('telephone')
         .optional()
         .notEmpty(),
+    validateErrorsWithoutFiles
+]
+//validaciones para agregar servicios
+export const serviceCreateValidator = [
+    body('name')
+    .trim()
+    .notEmpty()
+    .withMessage("Service name's is required")
+    .isLength({min: 3}).withMessage('The name must have at least 3 characters')
+    .isLength({max: 20}).withMessage('The name cannot have more than 20 characters')
+    .custom(async (name) => {
+        const exists = await Service.findOne({name})
+        if (exists) {
+          return Promise.reject('This service is already exists')  
+        }
+    }),
+    body('price')
+    .notEmpty().withMessage('Price is required')
+    .isNumeric().withMessage('Price got to be number'),
+    body('description')
+    .notEmpty()
+    .withMessage("Description is required").withMessage('Description cannot have more than 20 characters')
+    .isLength({max: 300}),
+    validateErrorsWithoutFiles
+]
+//validaciones para actualizar serivicio
+export const serviceUpdateValidator = [
+    body('name')
+    .trim()
+    .notEmpty()
+    .withMessage("Service name's is required")
+    .isLength({min: 3}).withMessage('The name must have at least 3 characters')
+    .isLength({max: 20}).withMessage('The name cannot have more than 20 characters')
+    .custom(async (name,{req}) => {
+        const serviceId = req.params.serviceId
+        const exists = await Service.findOne({name, _id: {$ne:serviceId}})
+        if (exists){
+            return Promise.reject("Could not be updated. The Service is already exists")
+        }
+    }),
+    body('price')
+    .notEmpty().withMessage('Price is required')
+    .isNumeric().withMessage('Price got to be number'),
+    body('description')
+    .notEmpty()
+    .withMessage("Description is required").withMessage('Description cannot have more than 20 characters')
+    .isLength({max: 300}),
     validateErrorsWithoutFiles
 ]
 
