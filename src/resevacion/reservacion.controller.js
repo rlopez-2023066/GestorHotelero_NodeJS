@@ -303,6 +303,15 @@ export const createReservationEvent = async (req, res) => {
       }) 
     }
 
+    //Verificar si el evento ya esta finalizado
+    if (eventData.status === 'Finished') {
+        return res.status(400).send({
+            success: false,
+            message: 'Event is already finished'
+        })
+    }
+    
+
     // Verificar existencia de la habitación
     const roomData = await Room.findById(room) 
     if (!roomData) {
@@ -334,6 +343,9 @@ export const createReservationEvent = async (req, res) => {
       const quantity = service.quantity || 1 
       return sum + price * quantity 
     }, 0) 
+    console.log(totalServiceAdd)
+
+
 
     // Crear la reservación
     const newReservation = new Reservation({
@@ -401,6 +413,7 @@ export const updateReservationEvent = async (req, res) => {
             }) 
         }
 
+        // Obtener datos del body
         const {
             room: newRoomId,
             description,
@@ -408,9 +421,10 @@ export const updateReservationEvent = async (req, res) => {
             endTime
         } = req.body 
 
+        // Usar la habitación actual por defecto
         let roomToUpdate = reservation.room 
 
-        // Validar si se quiere cambiar la habitación
+        // Si se envía un nuevo ID de habitación y es diferente, cambiarla
         if (newRoomId && newRoomId !== reservation.room.toString()) {
             const newRoom = await Room.findById(newRoomId) 
             if (!newRoom || newRoom.type !== 'event') {
@@ -434,14 +448,14 @@ export const updateReservationEvent = async (req, res) => {
                 await oldRoom.save() 
             }
 
-            // Ocupa la nueva habitación
+            // Ocupar la nueva habitación
             newRoom.state = 'busy' 
             await newRoom.save() 
 
             roomToUpdate = newRoomId 
         }
 
-        // Recalcular precio desde el evento actual
+        // Recalcular precio desde los servicios del evento
         const eventData = await Event.findById(reservation.event) 
         const totalPrice = eventData.services.reduce((sum, service) => {
             const price = service.price || 0 
@@ -449,13 +463,16 @@ export const updateReservationEvent = async (req, res) => {
             return sum + price * quantity 
         }, 0) 
 
-        // Actualizar reservación
+        //Busca la habitación para obtener el precio
+        const roomPrice = await Room.findById(roomToUpdate)
+
+        // Actualizar la reservación
         reservation.room = roomToUpdate 
         reservation.hotel = (await Room.findById(roomToUpdate)).hotel 
         reservation.description = description || reservation.description 
         reservation.startTime = startTime || reservation.startTime 
         reservation.endTime = endTime || reservation.endTime 
-        reservation.price = totalPrice 
+        reservation.price = totalPrice + roomPrice.price
 
         const updatedReservation = await reservation.save() 
 
@@ -473,7 +490,3 @@ export const updateReservationEvent = async (req, res) => {
         }) 
     }
 } 
-
-
-
-
