@@ -10,16 +10,22 @@ import {
 } from './reservacion.controller.js'
 
 //Importación de validaciones
+import {
+    registerReservationValidator,
+    updateReservationValidator,
+    registerEventValidator
+} from '../../middlewares/validators.js'
+
 
 import {validateJwt} from '../../middlewares/validate.jwt.js'
 
 const api = Router()
 
-//Crear Reservación
-api.post('/createReservation', validateJwt, createReservationRoom)
+//Crear Reservación Habitación
+api.post('/createReservation', validateJwt, registerReservationValidator, createReservationRoom)
 
 //Actualizar Reservación
-api.put('/updateReservation/:id', validateJwt, updateReservationRoom)
+api.put('/updateReservation/:id', validateJwt, updateReservationValidator, updateReservationRoom)
 
 //Eliminar Reservación y Evento
 api.put('/deleteReservationRoomAndEvent/:id', validateJwt, deleteReservationRoomAndEvent)
@@ -28,10 +34,10 @@ api.put('/deleteReservationRoomAndEvent/:id', validateJwt, deleteReservationRoom
 api.get('/listReservationHotel/:id', validateJwt, getReservationsByHotel)
 
 //Crear Reservacion para Eventos
-api.post('/createReservationEvent', validateJwt, createReservationEvent)
+api.post('/createReservationEvent', validateJwt, registerEventValidator ,createReservationEvent)
 
 //Actualizar Reservacion para Eventos
-api.put('/updateReservationEvent/:id', validateJwt, updateReservationEvent)
+api.put('/updateReservationEvent/:id', validateJwt, updateReservationValidator, updateReservationEvent)
 
 
 
