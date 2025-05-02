@@ -3,7 +3,7 @@
 import Hotel from './hotel.model.js'
 
 
-export const addUser = async(req,res) =>{
+export const addHotel = async(req,res) =>{
     try {
         const data = req.body
 
@@ -34,6 +34,142 @@ export const addUser = async(req,res) =>{
 export const getAllHotels = async(req, res)=>{
     try {
         const hotels = await Hotel.find()
+
+        if(!hotels){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Could not found Hotels '
+                }
+            )
+        }
+
+        return res.status(200).send(
+            {
+                success: true,
+                message: 'Hotels found: ',
+                hotel: hotels
+            }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'Internal  error',
+                error
+            }
+        )
+    }
+}
+
+export const getHotelsAtoZ = async(req,res)=>{
+    try {
+        const hotels = await Hotel.find().sort({name: 1})
+
+        if(!hotels){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Could not found Hotels '
+                }
+            )
+        }
+
+        return res.status(200).send(
+            {
+                success: true,
+                message: 'Hotels found: ',
+                hotel: hotels
+            }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'Internal  error',
+                error
+            }
+        )
+    }
+}
+
+export const getHotelsZtoA = async(req,res)=>{
+    try {
+        const hotels = await Hotel.find().sort({name: -1})
+
+        if(!hotels){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Could not found Hotels '
+                }
+            )
+        }
+
+        return res.status(200).send(
+            {
+                success: true,
+                message: 'Hotels found: ',
+                hotel: hotels
+            }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'Internal  error',
+                error
+            }
+        )
+    }
+}
+
+export const geHoteltByName = async(req,res)=>{
+    try {
+        const q = req.query.q?.trim();
+
+        const search = new RegExp(q, 'i')
+
+        const hotels = await Hotel.find({
+            nombre: { $regex: search }
+         });
+
+         if(!hotels){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'Could not found Hotels '
+                }
+            )
+         }
+
+         return res.status(200).send(
+            {
+                success: true,
+                message: 'Hotels found: ',
+                hotel: hotels
+            }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'Internal  error',
+                error
+            }
+        )
+    }
+}
+
+export const getHotelById = async(req,res)=>{
+    try {
+        const {id} = req.params
+
+        const hotels = await Hotel.findById(id)
 
         if(!hotels){
             return res.status(404).send(
@@ -105,7 +241,7 @@ export const deleteHotel = async(req,res)=>{
     try {
         const {id} = req.params
 
-        const hotel = await Hotel.findOneAndDelete(id)
+        const hotel = await Hotel.findByIdAndDelete(id)
 
         if(!hotel){
             return res.status(404).send(
@@ -123,6 +259,26 @@ export const deleteHotel = async(req,res)=>{
             }
         )
 
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                success: false,
+                message: 'Internal  error',
+                error
+            }
+        )
+    }
+}
+
+export const withoutId = async(req,res)=>{
+    try {
+        return res.status(404).send(
+            {
+                success: false,
+                message: 'Please entre an Id'
+            }
+        )
     } catch (error) {
         console.error(error)
         return res.status(500).send(
