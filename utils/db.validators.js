@@ -5,7 +5,7 @@ import {
 
 
 import User from '../src/user/user.model.js'
-
+import Service from '../src/servicio/servicio.model.js'
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
 
@@ -47,3 +47,12 @@ export const findUser = async(id)=>{
         return false
     }
 }
+// Validate if service exists in DB
+export const serviceExists = async (id) => {
+    const service = await Service.findById(id)
+    if (!service) {
+      console.error(`Service with ID ${id} does not exist`)
+      throw new Error(`Service with ID ${id} does not exist`)
+    }
+  }
+  
