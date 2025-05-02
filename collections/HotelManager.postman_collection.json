@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d9bcd17b-d6e0-4128-9e6d-190764973833",
+		"_postman_id": "a258b9d0-5bd8-43af-9f8d-3a53c787dd68",
 		"name": "HotelManager",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956963"
+		"_exporter_id": "37956967"
 	},
 	"item": [
 		{
@@ -511,16 +511,47 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Cena De Graduación\",\r\n  \"description\": \"Solo un servicio agregado\",\r\n  \"type\": \"Conferencia\",\r\n  \"startTime\": \"2022-05-15T10:00:00Z\",\r\n  \"endTime\": \"2022-05-15T12:00:00Z\",\r\n  \"services\": [\r\n    {\r\n      \"serviceId\": \"68145d0312f6c38a0b712c35\"\r\n    }\r\n  ]\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Cena de Graduación",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Cena y Fiesta",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Convivencia Familiar",
+									"type": "text"
+								},
+								{
+									"key": "startTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "endTime",
+									"value": "2024-02-15T18:00:00Z",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Cancelado",
+									"type": "text"
+								},
+								{
+									"key": "services",
+									"value": "68123d4b08234f5e35020746",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "localhost:2002/v1/events/updateEvent/6814603b243ff2d21660b77d",
+							"raw": "localhost:2002/v1/events/updateEvent/681311fb4c9bd96b602fff72",
 							"host": [
 								"localhost"
 							],
@@ -529,7 +560,7 @@
 								"v1",
 								"events",
 								"updateEvent",
-								"6814603b243ff2d21660b77d"
+								"681311fb4c9bd96b602fff72"
 							]
 						}
 					},
@@ -617,22 +648,22 @@
 									"urlencoded": [
 										{
 											"key": "room",
-											"value": "6812b352b829287e295c77e5",
+											"value": "681448f395f080a959e5324a",
 											"type": "text"
 										},
 										{
 											"key": "description",
-											"value": "Reservacion para 2 Dias",
+											"value": "Reservacion Para vendedores",
 											"type": "text"
 										},
 										{
 											"key": "startTime",
-											"value": "2025-04-30T05:00:00Z",
+											"value": "2025-04-30T07:00:00Z",
 											"type": "text"
 										},
 										{
 											"key": "endTime",
-											"value": "2025-05-02T17:00:00Z",
+											"value": "2025-05-15T10:00:00Z",
 											"type": "text"
 										}
 									]
@@ -674,23 +705,23 @@
 										},
 										{
 											"key": "description",
-											"value": "Reservacion para 4 Dias",
+											"value": "Reservacion para 5 Dias",
 											"type": "text"
 										},
 										{
 											"key": "startTime",
-											"value": "2025-04-30T05:00:00Z",
+											"value": "2025-04-30T08:00:00Z",
 											"type": "text"
 										},
 										{
 											"key": "endTime",
-											"value": "2025-05-02T17:00:00Z",
+											"value": "2025-05-02T20:00:00Z",
 											"type": "text"
 										}
 									]
 								},
 								"url": {
-									"raw": "localhost:2002/v1/reservation/updateReservation/6812cd352a52a6fd749d57bf",
+									"raw": "localhost:2002/v1/reservation/updateReservation/68144f90e6177f9ece1fb4e7",
 									"host": [
 										"localhost"
 									],
@@ -699,7 +730,7 @@
 										"v1",
 										"reservation",
 										"updateReservation",
-										"6812cd352a52a6fd749d57bf"
+										"68144f90e6177f9ece1fb4e7"
 									]
 								}
 							},
@@ -717,7 +748,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2002/v1/reservation/deleteReservation/6812a63d0ac62bd707d924e1",
+									"raw": "localhost:2002/v1/reservation/deleteReservationRoomAndEvent/68144f4ee6177f9ece1fb4d7",
 									"host": [
 										"localhost"
 									],
@@ -725,8 +756,8 @@
 									"path": [
 										"v1",
 										"reservation",
-										"deleteReservation",
-										"6812a63d0ac62bd707d924e1"
+										"deleteReservationRoomAndEvent",
+										"68144f4ee6177f9ece1fb4d7"
 									]
 								}
 							},
@@ -744,7 +775,7 @@
 									}
 								],
 								"url": {
-									"raw": "localhost:2002/v1/reservation/listReservationHotel/6812559495634fecb28f5360",
+									"raw": "localhost:2002/v1/reservation/listReservationHotel/6812f1f5aee31a81993d12c7",
 									"host": [
 										"localhost"
 									],
@@ -753,7 +784,7 @@
 										"v1",
 										"reservation",
 										"listReservationHotel",
-										"6812559495634fecb28f5360"
+										"6812f1f5aee31a81993d12c7"
 									]
 								}
 							},
@@ -889,10 +920,7 @@
 							"name": "listReservationEventHotelId",
 							"request": {
 								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": ""
-								}
+								"header": []
 							},
 							"response": []
 						}
@@ -924,7 +952,7 @@
 								},
 								{
 									"key": "type",
-									"value": "Living_room",
+									"value": "Individual",
 									"type": "text"
 								},
 								{
@@ -934,7 +962,7 @@
 								},
 								{
 									"key": "capacity",
-									"value": "50",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -944,7 +972,7 @@
 								},
 								{
 									"key": "price",
-									"value": "1500",
+									"value": "250",
 									"type": "text"
 								}
 							]
@@ -1136,10 +1164,7 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
+						"header": []
 					},
 					"response": []
 				},
@@ -1147,10 +1172,7 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
+						"header": []
 					},
 					"response": []
 				},
@@ -1158,10 +1180,7 @@
 					"name": "New Request",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
+						"header": []
 					},
 					"response": []
 				}
