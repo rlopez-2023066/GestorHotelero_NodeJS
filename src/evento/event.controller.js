@@ -3,36 +3,59 @@ import Service from "../servicio/servicio.model.js"
 
 //Create Event
 export const createEvent = async (req, res) => {
-try{
-    const data = req.body;
-
-    //Validate that the service exists
-    const servicesExist  = await Service.findById(data.services);
-    if(!servicesExist ){
-        return res.status(404).send({
+    try {
+      const data = req.body 
+  
+      const servicesArray = [] 
+  
+      for (const item of data.services) {
+        const service = await Service.findById(item.serviceId) 
+  
+        if (!service) {
+          return res.status(404).send({
             success: false,
-            message: 'Service not found'
-        })
-    }
-
-    //Create Event
-    const event = new Event(data)
-    await event.save()
-
-    return res.send({
+            message: `Service not found`
+          }) 
+        }
+  
+        if (service.amount < item.quantity) {
+          return res.status(400).send({
+            success: false,
+            message: `Not enough quantity for Service`
+          }) 
+        }
+  
+        service.amount -= item.quantity 
+  
+        await service.save() 
+  
+        servicesArray.push({
+          serviceId: item.serviceId,
+          quantity: item.quantity,
+          price: service.price
+        }) 
+      }
+  
+      data.services = servicesArray 
+  
+      const event = new Event(data) 
+      await event.save() 
+  
+      return res.send({
         success: true,
-        message: 'Event created succesfully =0',
+        message: 'Event created successfully',
         event
-    })
-} catch (err) {
-    console.error('General error', err);
-    return res.status(500).send({
+      }) 
+
+    } catch (err) {
+      console.error('General error', err) 
+      return res.status(500).send({
         success: false,
         message: 'General error',
         err
-    })
-}
-}
+      }) 
+    }
+  } 
 
 //Update Event
 export const updateEvent = async (req, res) => {
@@ -70,7 +93,7 @@ export const updateEvent = async (req, res) => {
             event: updateEvent
         })
     } catch (err){
-        console.error('General error', err);
+        console.error('General error', err) 
         return res.status(500).send({
             success: false,
             message: 'General error',
@@ -81,30 +104,49 @@ export const updateEvent = async (req, res) => {
 
 //Delete Event
 export const deleteEvent = async (req, res) => {
-    try{
-        const { id } = req.params
-        const deleteEvent = await Event.findByIdAndDelete(id)
-
-        if(!deleteEvent){
-            return res.status(404).send({
-                success: false,
-                message: 'Event not found'
-            })
-        }
-        return res.send({
-            success: true,
-            message: 'Event removed successfully'
-        })
-
-    }catch (err){
-        console.error('General error', err);
-        return res.status(500).send({
+    try {
+      const { id } = req.params 
+  
+      const event = await Event.findById(id) 
+  
+      if (!event) {
+        return res.status(404).send({
+          success: false,
+          message: 'Event not found'
+        }) 
+      }
+  
+      for (const item of event.services) {
+        const service = await Service.findById(item.serviceId) 
+  
+        if (!service) {
+          return res.status(404).send({
             success: false,
-            message: 'General error',
-            err
-        })
+            message: `Service with ID ${item.serviceId} not found`
+          }) 
+        }
+  
+        service.amount += item.quantity 
+  
+        await service.save() 
+      }
+  
+      await Event.findByIdAndDelete(id) 
+  
+      return res.send({
+        success: true,
+        message: 'Event removed successfully'
+      }) 
+  
+    } catch (err) {
+      console.error('General error', err) 
+      return res.status(500).send({
+        success: false,
+        message: 'General error',
+        err
+      }) 
     }
-}
+  } 
 
 //Get all Events
 export const getAllEvents = async (req, res) => {
@@ -127,7 +169,7 @@ export const getAllEvents = async (req, res) => {
                 event
             })
     }catch (err){
-        console.error('General error', err);
+        console.error('General error', err) 
         return res.status(500).send({
             success: false,
             message: 'General error',
@@ -155,7 +197,7 @@ export const getEventById = async (req, res) => {
             data: event
         })
     }catch (err){
-        console.error('General error', err);
+        console.error('General error', err) 
         return res.status(500).send({
             success: false,
             message: 'General error',
@@ -163,3 +205,4 @@ export const getEventById = async (req, res) => {
         })
     }
 }
+

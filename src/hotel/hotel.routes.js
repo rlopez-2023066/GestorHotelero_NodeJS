@@ -9,12 +9,15 @@ const api = Router()
 
 //Agregar Hotel
 api.post('/addHotel', validateJwt, registerHotelValidator, addHotel)
+
 //Obtener Hoteles
 api.get('/getHotels', validateJwt, getAllHotels)
+
 //Actualizar Hotel
-api.put('/updateHotel/:id',validateJwt,updateHotelValidator,updateHotel)
+api.put('/updateHotel/:id',validateJwt, updateHotelValidator,updateHotel)
+
 //Eliminar Hotel
-api.delete('/deleteHotel/:id',validateJwt,deleteHotel)
+api.delete('/deleteHotel/:id',validateJwt, deleteHotel)
 
 
 
