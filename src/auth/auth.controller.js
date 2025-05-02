@@ -1,4 +1,4 @@
-import User from '../user/user.model.js';
+import User from '../user/user.model.js' 
 import {checkPassword, encrypt} from '../../utils/encrypt.js'
 import {generateJwt} from '../../utils/jwt.js'
 
