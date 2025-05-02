@@ -41,7 +41,7 @@ export const addService = async (req,res) => {
     try {
         const data = req.body
 
-        console.log("Hotel ID recibido:", data.hotel);
+        console.log("Hotel ID recibido:", data.hotel) 
         let hotelId = await Hotel.findById(data.hotel)
         if(!hotelId) {
             return res.status(404).send(
