@@ -1,5 +1,6 @@
 import {
-    body
+    body,
+    param
 } from 'express-validator'
 
 import {
@@ -9,8 +10,15 @@ import {
 
 import {
     existEmail,
+    existRoomNumberInHotel,
     existUsername,
-    notRequiredField
+    isValidHotelId,
+    notRequiredField,
+    preventHotelUpdate,
+    preventRoomNumberUpdate,
+    validateNoEmptyUpdates,
+    validateNoSalesField,
+    validateRoomId
 } from '../utils/db.validators.js'
 
 /* Observación: Colocar comentario acerca de la Validación */
@@ -128,4 +136,96 @@ export const updateHotelValidator = [
     validateErrorsWithoutFiles
 ]
 
+//Validaciones para agregar HABITACION
+export const saveRoomValidator = [
+    body('no_room')
+        .notEmpty().withMessage('Room number is required')
+        .isNumeric().withMessage('Room number must be a number')
+        .toInt() // Convert to integer
+        .custom(existRoomNumberInHotel)
+        .withMessage('Room number already exists in this hotel'),
+    
+    body('type')
+        .notEmpty().withMessage('Room type is required')
+        .isIn(['Individual', 'Double', 'Double Deluxe', 'Presidential Suite', 'Living_room'])
+        .withMessage('Invalid room type'),
+    
+    body('description')
+        .optional()
+        .isLength({ max: 200 })
+        .withMessage('Description cannot exceed 200 characters'),
+    
+    body('capacity')
+        .notEmpty().withMessage('Capacity is required')
+        .isInt({ min: 1 }).withMessage('Capacity must be at least 1'),
+    
+    body('state')
+        .optional()
+        .isIn(['available', 'busy'])
+        .withMessage('Invalid room state'),
+    
+    body('sales')
+        .custom(validateNoSalesField),
+    
+    body('price')
+        .notEmpty().withMessage('Price is required')
+        .isFloat({ min: 0 }).withMessage('Price cannot be negative'),
+    
+    body('hotel')
+        .notEmpty().withMessage('Hotel ID is required')
+        .isMongoId().withMessage('Invalid Hotel ID format')
+        .custom(isValidHotelId)
+        .withMessage('Hotel does not exist'),
+    
+    validateErrors
+]
 
+//Validaciones para actualizar HABITACION
+export const updateRoomValidator = [
+    param('id')
+        .custom(validateRoomId)
+        .withMessage('Invalid room ID or room does not exist'),
+    body()
+        .custom(validateNoEmptyUpdates),
+    body('no_room')
+        .optional()
+        .custom(preventRoomNumberUpdate),
+    body('type')
+        .optional()
+        .isIn(['Individual', 'Double', 'Double Deluxe', 'Presidential Suite', 'Living_room'])
+        .withMessage('Invalid room type'),
+    body('description')
+        .optional()
+        .isLength({ max: 200 })
+        .withMessage('Description cannot exceed 200 characters'),
+    body('capacity')
+        .optional()
+        .isInt({ min: 1 })
+        .withMessage('Capacity must be at least 1'),
+    body('state')
+        .optional()
+        .isIn(['available', 'busy'])
+        .withMessage('Invalid room state'),
+    
+    body('sales')
+        .custom(validateNoSalesField),
+    
+    body('price')
+        .optional()
+        .isFloat({ min: 0 })
+        .withMessage('Price cannot be negative'),
+    
+    body('hotel')
+        .optional()
+        .custom(preventHotelUpdate),
+    
+    validateErrors
+]
+
+export const deleteRoomValidator = [
+    param('id')
+        .notEmpty().withMessage('ID parameter is required')
+        .isMongoId().withMessage('Invalid ID format')
+        .custom(validateRoomId),
+    validateErrors
+]
