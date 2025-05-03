@@ -16,7 +16,7 @@ const serviceSchema = Schema(
             type:Number,
             required:[true,'amount is required']
         },
-        price:{
+        priceOne:{
             type:Number,
             required:[true,'price is requried']
         },
