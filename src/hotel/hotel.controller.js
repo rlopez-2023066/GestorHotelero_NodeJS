@@ -2,7 +2,7 @@
 
 import Hotel from './hotel.model.js'
 
-
+//Agregar Hotel
 export const addHotel = async(req,res) =>{
     try {
         const data = req.body
@@ -30,7 +30,7 @@ export const addHotel = async(req,res) =>{
     }
 }
 
-
+//Obtener Hoteles
 export const getAllHotels = async(req, res)=>{
     try {
         const hotels = await Hotel.find()
@@ -63,7 +63,7 @@ export const getAllHotels = async(req, res)=>{
     }
 }
 
-
+//Actualizar Hotel
 export const updateHotel = async(req,res)=>{
     try {
         const {id} = req.params
@@ -100,12 +100,12 @@ export const updateHotel = async(req,res)=>{
     }
 }
 
-
+//Eliminar Hotel
 export const deleteHotel = async(req,res)=>{
     try {
         const {id} = req.params
 
-        const hotel = await Hotel.findOneAndDelete(id)
+        const hotel = await Hotel.findByIdAndDelete(id)
 
         if(!hotel){
             return res.status(404).send(
