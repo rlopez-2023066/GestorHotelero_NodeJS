@@ -4,8 +4,12 @@ const invoiceSchema = new Schema(
     {
         reservation: {
             type: Schema.Types.ObjectId,
-            ref: 'Reservation',
-            required: true
+            ref: 'Reservation'      
+        },
+        
+        event: {
+            type: Schema.Types.ObjectId,
+            ref: 'Event'
         },
 
         user: {
