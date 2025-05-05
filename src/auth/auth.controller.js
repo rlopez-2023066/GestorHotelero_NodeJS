@@ -9,7 +9,16 @@ export const register = async(req, res) => {
         let data = req.body
         let user = new User(data)
         user.password = await encrypt(user.password)
-        user.role = 'CLIENT'
+
+        if(user.role === 'ADMIN'){
+            return res.status(404).send(
+                {
+                    success: false,
+                    message: 'You cannot register an ADMIN user'
+                }
+            )
+        }
+        
         await user.save()
         
         return res.send(
@@ -51,7 +60,8 @@ export const login = async(req, res) => {
                 uid: user._id,
                 username: user.username,
                 name: user.name,
-                role: user.role
+                role: user.role,
+                hotel: user.hotel,
             }
 
             let token = await generateJwt(loggedUser)
