@@ -1,16 +1,25 @@
 import { Router } from 'express'
 
-import {getAllServices,
+import {
+     getAllServices,
      addService, 
      updateService, 
      deleteService } from './servicio.controller.js'
-import {validateJwt} from '../../middlewares/validate.jwt.js'
+
+import {validateJwt, authorizeRoles } from '../../middlewares/validate.jwt.js'
+
+import {
+     serviceCreateValidator,
+     serviceUpdateValidator
+} from './../../middlewares/validators.js'
 
 const api = Router()
 
-api.get('/getService',validateJwt, getAllServices)
-api.post('/addService', validateJwt, addService)
-api.put('/updateSerive/:id', validateJwt,updateService)
-api.delete('/deleteService/:id',validateJwt, deleteService)
+
+
+api.get('/getService',validateJwt, authorizeRoles('ADMIN_HOTEL', 'ADMIN') ,getAllServices)
+api.post('/addService', validateJwt, serviceCreateValidator, authorizeRoles('ADMIN_HOTEL', 'ADMIN'), addService)
+api.put('/updateService/:id', validateJwt, serviceUpdateValidator, authorizeRoles('ADMIN_HOTEL', 'ADMIN'), updateService)
+api.delete('/deleteService/:id',validateJwt, authorizeRoles('ADMIN_HOTEL', 'ADMIN'), deleteService)
 
 export default api
