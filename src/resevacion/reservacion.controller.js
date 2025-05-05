@@ -1,15 +1,15 @@
 import Reservation from './reservacion.model.js'
 import Room from '../habitacion/habitacion.model.js'
 import Hotel from '../hotel/hotel.model.js'
-import Event from '../evento/event.model.js'
 
 //Create Reservartion (Room)
 export const createReservationRoom = async (req, res) =>{
     try{
-        const {room, description, startTime, endTime} = req.body
-
         //Verificar que el ID User exista
         let userId = req.user.uid
+
+        const {room, description, startTime, endTime} = req.body
+        const roomData = await Room.findById(room)
         
         if(!userId){
             return res.status(404).send(
@@ -21,7 +21,6 @@ export const createReservationRoom = async (req, res) =>{
         }
 
         //Verificar si la habitacion exista
-        const roomData = await Room.findById(room)
         if(!roomData){
             return res.status(404).send(
                 {
@@ -31,8 +30,17 @@ export const createReservationRoom = async (req, res) =>{
             )
         }
 
+        if(roomData.type === 'Living_room'){
+            return res.status(404).send(
+                {
+                    success:false,
+                    message:' The room is like a living room.'
+                }
+            )
+        }
+
         //Verificar si la habitacion esta disponible
-        if(roomData.state !== 'available'){
+        if(roomData.state === 'busy'){
             return res.status(400).send(
                 {
                     success: false,
@@ -84,15 +92,9 @@ export const createReservationRoom = async (req, res) =>{
 export const updateReservationRoom = async (req, res) => {
     try {
         const { id } = req.params 
+        const reservation = await Reservation.findById(id)
 
-        // Verificar si la reservación existe
-        const reservation = await Reservation.findById(id) 
-        if (!reservation) {
-            return res.status(404).send({
-                success: false,
-                message: 'Reservation not found'
-            }) 
-        }
+        
 
         // Verificar si la reservación es del usuario
         const userId = req.user.uid 
@@ -103,14 +105,10 @@ export const updateReservationRoom = async (req, res) => {
             }) 
         }
 
-        // Verificar si la reservación ya está asociada a un evento
-        if (reservation.event) {
-            return res.status(400).send({
-                success: false,
-                message: 'This reservation is already associated with an event'
-            }) 
-        }
+        
 
+        // Verificar si la reservación ya está asociada a un evento
+        
         const {
             room: newRoomId,
             description,
@@ -123,6 +121,7 @@ export const updateReservationRoom = async (req, res) => {
         // Si se intenta cambiar de habitación
         if (newRoomId && newRoomId !== reservation.room.toString()) {
             const newRoom = await Room.findById(newRoomId) 
+            console.log(newRoom);
             if (!newRoom) {
                 return res.status(404).send({
                     success: false,
@@ -130,7 +129,15 @@ export const updateReservationRoom = async (req, res) => {
                 }) 
             }
 
-            if (newRoom.state !== 'available') {
+            if(newRoom.type === 'Living_room'){
+                return res.status(404).send({
+                    success: false,
+                    message: 'New room is not a Living room'
+                    }
+                )
+            }
+
+            if (newRoom.state === 'busy') {
                 return res.status(400).send({
                     success: false,
                     message: 'New room is not available'
@@ -178,7 +185,7 @@ export const updateReservationRoom = async (req, res) => {
 } 
 
 // Delete Reservation (Room and Event)
-export const deleteReservationRoomAndEvent = async (req, res) => {
+export const deleteReservationRoom = async (req, res) => {
     try {
         const { id } = req.params 
 
@@ -238,9 +245,28 @@ export const deleteReservationRoomAndEvent = async (req, res) => {
 export const getReservationsByHotel = async (req, res) => {
     try {
         const { id } = req.params 
-
-        console.log(id)
         const hotelExists = await Hotel.findById(id) 
+        const hotelIdJwt = req.user.hotel
+        
+        if(!hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You are not the hotel manager.'
+                }
+            )
+        }
+        
+        if( id.toString() !== hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You do not have permission to modify this service'
+                }
+            )
+        }
+
+    
         if (!hotelExists) {
             return res.status(404).send(
                 {
@@ -262,7 +288,6 @@ export const getReservationsByHotel = async (req, res) => {
                 }
             )
             .populate('user', 'name email')
-            .populate('event') 
 
         const filteredReservations = reservations.filter(res => res.room !== null) 
 
@@ -280,213 +305,29 @@ export const getReservationsByHotel = async (req, res) => {
     }
 } 
 
-//Create Reservartion (Event)
-export const createReservationEvent = async (req, res) => {
-  try {
-    const { room, description, startTime, endTime, event } = req.body 
-
-    // Obtener el ID del usuario
-    const userId = req.user.uid 
-    if (!userId) {
-      return res.status(404).send({
-        success: false,
-        message: 'User not found'
-      }) 
-    }
-
-    // Verificar existencia del evento
-    const eventData = await Event.findById(event) 
-    if (!eventData) {
-      return res.status(404).send({
-        success: false,
-        message: 'Event not found'
-      }) 
-    }
-
-    //Verificar si el evento ya esta finalizado
-    if (eventData.status === 'Finished') {
-        return res.status(400).send({
-            success: false,
-            message: 'Event is already finished'
-        })
-    }
-    
-
-    // Verificar existencia de la habitación
-    const roomData = await Room.findById(room) 
-    if (!roomData) {
-      return res.status(404).send({
-        success: false,
-        message: 'Room not found'
-      }) 
-    }
-
-    // Verificar que la habitación sea tipo 'Living-room' (para eventos)
-    if (roomData.type !== 'Living_room') {
-      return res.status(400).send({
-        success: false,
-        message: 'Room is not suitable for events'
-      }) 
-    }
-
-    // Verificar si la habitación está disponible
-    if (roomData.state !== 'available') {
-      return res.status(400).send({
-        success: false,
-        message: 'Room is not available'
-      }) 
-    }
-
-    // Calcular el total del precio de los servicios del evento
-    const totalServiceAdd = eventData.services.reduce((sum, service) => {
-      const price = service.price || 0 
-      const quantity = service.quantity || 1 
-      return sum + price * quantity 
-    }, 0) 
-    console.log(totalServiceAdd)
 
 
-
-    // Crear la reservación
-    const newReservation = new Reservation({
-      user: userId,
-      room,
-      hotel: roomData.hotel,
-      description: eventData.description,
-      startTime: eventData.startTime,
-      endTime: eventData.endTime,
-      status: 'confirmed',
-      price: roomData.price + totalServiceAdd,
-      event
-    }) 
-
-    const savedReservation = await newReservation.save() 
-
-    // Cambiar estado de la habitación a ocupada
-    roomData.state = 'busy' 
-    await roomData.save() 
-
-    res.status(201).send({
-      success: true,
-      message: 'Reservation created successfully',
-      savedReservation
-    }) 
-
-  } catch (error) {
-    console.error(error) 
-    res.status(500).send({
-      success: false,
-      message: 'Internal Error Reservation (Event)'
-    }) 
-  }
-} 
-
-
-// Update Reservation (Event)
-export const updateReservationEvent = async (req, res) => {
+//Listar Reservaciones por Usuario
+export const getReservationsByUser = async (req, res) => {
     try {
-        const { id } = req.params 
-
-        // Buscar la reservación
-        const reservation = await Reservation.findById(id) 
-        if (!reservation) {
-            return res.status(404).send({
-                success: false,
-                message: 'Reservation not found'
-            }) 
-        }
-
-        // Validar usuario
         const userId = req.user.uid 
-        if (reservation.user.toString() !== userId) {
-            return res.status(403).send({
-                success: false,
-                message: 'You are not authorized to update this reservation'
-            }) 
-        }
 
-        // Validar que sea una reservación con evento
-        if (!reservation.event) {
-            return res.status(400).send({
-                success: false,
-                message: 'This reservation is not associated with an event'
-            }) 
-        }
-
-        // Obtener datos del body
-        const {
-            room: newRoomId,
-            description,
-            startTime,
-            endTime
-        } = req.body 
-
-        // Usar la habitación actual por defecto
-        let roomToUpdate = reservation.room 
-
-        // Si se envía un nuevo ID de habitación y es diferente, cambiarla
-        if (newRoomId && newRoomId !== reservation.room.toString()) {
-            const newRoom = await Room.findById(newRoomId) 
-            if (!newRoom || newRoom.type !== 'event') {
-                return res.status(404).send({
-                    success: false,
-                    message: 'New room not found or not suitable for events'
-                }) 
-            }
-
-            if (newRoom.state !== 'available') {
-                return res.status(400).send({
-                    success: false,
-                    message: 'New room is not available'
-                }) 
-            }
-
-            // Liberar la habitación anterior
-            const oldRoom = await Room.findById(reservation.room) 
-            if (oldRoom) {
-                oldRoom.state = 'available' 
-                await oldRoom.save() 
-            }
-
-            // Ocupar la nueva habitación
-            newRoom.state = 'busy' 
-            await newRoom.save() 
-
-            roomToUpdate = newRoomId 
-        }
-
-        // Recalcular precio desde los servicios del evento
-        const eventData = await Event.findById(reservation.event) 
-        const totalPrice = eventData.services.reduce((sum, service) => {
-            const price = service.price || 0 
-            const quantity = service.quantity || 1 
-            return sum + price * quantity 
-        }, 0) 
-
-        //Busca la habitación para obtener el precio
-        const roomPrice = await Room.findById(roomToUpdate)
-
-        // Actualizar la reservación
-        reservation.room = roomToUpdate 
-        reservation.hotel = (await Room.findById(roomToUpdate)).hotel 
-        reservation.description = description || reservation.description 
-        reservation.startTime = startTime || reservation.startTime 
-        reservation.endTime = endTime || reservation.endTime 
-        reservation.price = totalPrice + roomPrice.price
-
-        const updatedReservation = await reservation.save() 
+        const reservations = await Reservation.find({ user: userId })
+            .populate('room', 'name description price')
+            .populate('user', 'name email')
+            .populate('hotel', 'name direction')
 
         res.status(200).send({
             success: true,
-            message: 'Event reservation updated successfully',
-            reservation: updatedReservation
+            reservations
         }) 
 
     } catch (error) {
         console.error(error) 
         res.status(500).send({
             success: false,
-            message: 'Internal Error while updating event reservation'
+            message: 'Internal Error while fetching reservations by user'
         }) 
     }
-} 
+}
+
