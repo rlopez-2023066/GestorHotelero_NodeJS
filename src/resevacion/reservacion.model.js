@@ -47,11 +47,6 @@ const reservationSchema = Schema(
         price: {
             type: Number,
             required: true
-        },
-
-        event: {
-            type: Schema.Types.ObjectId,
-            ref: 'Event'
         }
     },
     {
