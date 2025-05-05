@@ -12,7 +12,7 @@ const serviceSchema = Schema(
             required: [true, 'description is required'],
             maxLength: [120, `Can't be overcome 90 characters`]
         },
-        amount:{
+        amount :{
             type:Number,
             required:[true,'amount is required']
         },
