@@ -5,7 +5,6 @@ const roomSchema = new Schema(
         no_room: {
             type: Number,
             required: [true, 'Room number is required'],
-            unique: true
         },
 
         type: {
@@ -50,8 +49,8 @@ const roomSchema = new Schema(
         }
     },
     {
-        versionKey: false, //Deshabilitar el __v(Versión del documento)
-        timestamps: true //Agrega propiedades de fecha (Fecha de creación y de ultima actualización)
+        versionKey: false, 
+        timestamps: true 
     }
 )
 
