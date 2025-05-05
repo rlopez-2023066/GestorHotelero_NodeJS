@@ -32,10 +32,28 @@ const EventSchema = new mongoose.Schema({
 
     status: {
       type: String,
-      enum: ['Scheduled', 'Canceled', 'Finished'],
+      enum: ['Scheduled', 'Canceled', 'Finished', 'In Progress', 'Completed'],
       default: 'Scheduled'
     },
 
+    hotel: {
+      type: Schema.Types.ObjectId,
+      ref: 'Hotel', 
+      required: true
+    },
+
+    room: {
+      type: Schema.Types.ObjectId,
+      ref: 'Room',
+      required: true
+    },
+
+    user:{
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    
     services: [
       {
         serviceId:{
