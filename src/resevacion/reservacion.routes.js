@@ -4,40 +4,38 @@ import {
     createReservationRoom,
     updateReservationRoom,
     getReservationsByHotel,
-    createReservationEvent,
-    deleteReservationRoomAndEvent,
-    updateReservationEvent
+    deleteReservationRoom,
+    getReservationsByUser
 } from './reservacion.controller.js'
 
 //Importación de validaciones
 import {
     registerReservationValidator,
-    updateReservationValidator,
-    registerEventValidator
+    updateReservationValidator
 } from '../../middlewares/validators.js'
 
 
-import {validateJwt} from '../../middlewares/validate.jwt.js'
+import {validateJwt, authorizeRoles} from '../../middlewares/validate.jwt.js'
 
 const api = Router()
 
-//Crear Reservación Habitación
-api.post('/createReservation', validateJwt, registerReservationValidator, createReservationRoom)
 
-//Actualizar Reservación
-api.put('/updateReservation/:id', validateJwt, updateReservationValidator, updateReservationRoom)
-
-//Eliminar Reservación y Evento
-api.put('/deleteReservationRoomAndEvent/:id', validateJwt, deleteReservationRoomAndEvent)
+//Listar Reservaciones por Usuario
+api.get('/getReservationsByUser', validateJwt, authorizeRoles('ADMIN_HOTEL', 'CLIENT'), getReservationsByUser)
 
 //Listar Reservaciones por Hotel
-api.get('/listReservationHotel/:id', validateJwt, getReservationsByHotel)
+api.get('/listReservationHotel/:id', validateJwt, authorizeRoles('ADMIN','ADMIN_HOTEL'), getReservationsByHotel)
 
-//Crear Reservacion para Eventos
-api.post('/createReservationEvent', validateJwt, registerEventValidator ,createReservationEvent)
+//Crear Reservación Habitación
+api.post('/createReservation', validateJwt, registerReservationValidator, authorizeRoles('ADMIN_HOTEL', 'CLIENT'), createReservationRoom)
 
-//Actualizar Reservacion para Eventos
-api.put('/updateReservationEvent/:id', validateJwt, updateReservationValidator, updateReservationEvent)
+//Actualizar Reservación
+api.put('/updateReservation/:id', validateJwt, updateReservationValidator, authorizeRoles('ADMIN_HOTEL', 'CLIENT'), updateReservationRoom)
+
+//Eliminar Reservación
+api.put('/deleteReservationRoomAndEvent/:id', validateJwt, authorizeRoles('ADMIN_HOTEL', 'CLIENT'), deleteReservationRoom)
+
+
 
 
 
