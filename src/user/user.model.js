@@ -53,8 +53,16 @@ const userSchema = Schema(
             type: String,
             required: [true, 'Role is required'],
             uppercase: true,
-            enum: ['ADMIN', 'CLIENT']
+            enum: ['ADMIN', 'CLIENT', 'ADMIN_HOTEL']
         },
+
+        hotel: {
+            type: Schema.Types.ObjectId,
+            ref: 'Hotel',
+            required: function() {
+                return this.role === 'ADMIN_HOTEL'
+            }
+        }
     }
 )
 
