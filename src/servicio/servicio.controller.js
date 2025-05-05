@@ -2,9 +2,15 @@ import Hotel from '../hotel/hotel.model.js'
 import Service from '../servicio/servicio.model.js'
 
 export const getAllServices = async (req,res) => {
+    console.log("req.user:", req.user);
+
     try {
+        const hotelId =  req.user.hotel
+        console.log(hotelId);
         const {limit,skip}= req.query
-        const service = await Service.find()
+        const service = await Service.find({hotel: hotelId})
+
+        .populate('hotel')
         .skip(skip)
         .limit(limit)
 
@@ -41,8 +47,27 @@ export const addService = async (req,res) => {
     try {
         const data = req.body
 
-        console.log("Hotel ID recibido:", data.hotel) 
         let hotelId = await Hotel.findById(data.hotel)
+        let hotelIdJwt = req.user.hotel
+
+        if(!hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You are not the hotel manager.'
+                }
+            )
+        }
+
+        if(data.hotel !== hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You do not have permission to modify this service'
+                }
+            )
+        }
+        
         if(!hotelId) {
             return res.status(404).send(
                 {
@@ -80,6 +105,39 @@ export const updateService = async (req, res) => {
     try {
         const {id}=req.params
         const data = req.body
+        let hotelIdJwt = req.user.hotel
+        
+        const serviceData = await Service.findById(id)
+
+        if(!hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You are not the hotel manager.'
+                }
+            )
+        }
+        
+        if( serviceData.hotel.toString() !== hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You do not have permission to modify this service'
+                }
+            )
+        }
+        
+        
+
+        const service = await Service.findById(id)
+        if(!service){
+            return res.status(404).send(
+                {
+                    success:false,
+                    message:'Service not found'
+                }
+            )
+        }
 
         const updateService = await Service.findByIdAndUpdate(
             id,
@@ -91,14 +149,15 @@ export const updateService = async (req, res) => {
                 {
                     success:false,
                     message:'Service not found',
+                    
                 }
             )
         }
         return res.status(200).send(
             {
                 success:true,
-                message:'Service updated successfully'
-               
+                message:'Service updated successfully',
+                updateService
             }
         )
         
@@ -116,8 +175,28 @@ export const updateService = async (req, res) => {
 export const deleteService = async (req,res) => {
     try {
         const {id}= req.params
-        const data = req.body
-    
+        let hotelIdJwt = req.user.hotel
+        
+        const serviceData = await Service.findById(id)
+
+        if(!hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You are not the hotel manager.'
+                }
+            )
+        }
+        
+        if( serviceData.hotel.toString() !== hotelIdJwt){
+            return res.status(403).send(
+                {
+                    success: false,
+                    message: 'You do not have permission to modify this service'
+                }
+            )
+        }
+        
         const deleteService = await Service.findByIdAndDelete(id)
         
         if(!deleteService){
