@@ -15,7 +15,7 @@ import eventRoutes from '../src/evento/event.routes.js'
 import roomRoutes from '../src/habitacion/habitacion.routes.js'
 import reservationRouter from '../src/resevacion/reservacion.routes.js'
 import invoiceRouter from '../src/factura/factura.routes.js'
-
+import adminRoutes from '../src/Admin/admin.routes.js'
 
 
 const configs = (app) => {
@@ -32,6 +32,7 @@ const routes = (app) => {
 
     //Rutas de Autenticación
     app.use(authRoutes)
+    app.use('/v1/admin', adminRoutes)
     app.use('/v1/user', userRoutes)
     app.use('/v1/hotel',hotelRoutes)
     app.use('/v1/service',serviceRoutes)
