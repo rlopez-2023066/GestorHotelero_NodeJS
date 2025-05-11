@@ -1,11 +1,12 @@
-import { model, Schema } from "mongoose";
+import { model, Schema } from "mongoose" 
 
 const hotelSchema = Schema(
     {
         name:{
             type:String,
             required: [true, 'Name is required'],
-            maxLength: [50, `Can't be overcome 50 characters`]
+            maxLength: [50, `Can't be overcome 50 characters`],
+            unique: true
         },
         direction:{
             type:String,
@@ -27,7 +28,11 @@ const hotelSchema = Schema(
             required: [true, 'Telephone is required'],
             maxLength: [14, `Can't be overcome 14 characters`]
         }
+    },
+    {
+        versionKey: false, 
+        timestamps: true 
     }
 )
 
-export default model('Motel',hotelSchema)
+export default model('Hotel',hotelSchema)
