@@ -1,4 +1,4 @@
-import mongoose, {Schema, model} from "mongoose";
+import { model,Schema } from "mongoose" 
 
 const serviceSchema = Schema(
     {
@@ -12,11 +12,11 @@ const serviceSchema = Schema(
             required: [true, 'description is required'],
             maxLength: [120, `Can't be overcome 90 characters`]
         },
-        amount:{
+        amount :{
             type:Number,
             required:[true,'amount is required']
         },
-        price:{
+        priceOne:{
             type:Number,
             required:[true,'price is requried']
         },
