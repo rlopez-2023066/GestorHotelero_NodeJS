@@ -1,7 +1,7 @@
 // model of event
-import mongoose, {Schema, model} from "mongoose" 
+import  {model, Schema} from "mongoose" 
 
-const EventSchema = new mongoose.Schema({
+const EventSchema = Schema({
     name: {
       type: String,
       required: true,
