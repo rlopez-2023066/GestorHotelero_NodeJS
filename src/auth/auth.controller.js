@@ -7,18 +7,11 @@ import {generateJwt} from '../../utils/jwt.js'
 export const register = async(req, res) => {
     try {
         let data = req.body
+        data.role = 'CLIENT'
         let user = new User(data)
         user.password = await encrypt(user.password)
-
-        if(user.role === 'ADMIN'){
-            return res.status(404).send(
-                {
-                    success: false,
-                    message: 'You cannot register an ADMIN user'
-                }
-            )
-        }
         
+     
         await user.save()
         
         return res.send(
