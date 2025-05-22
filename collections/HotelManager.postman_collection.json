@@ -29,12 +29,12 @@
 								},
 								{
 									"key": "email",
-									"value": "flopez@gmail.com",
+									"value": "kalopez@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "flopez",
+									"value": "kalopez",
 									"type": "text"
 								},
 								{
@@ -49,13 +49,15 @@
 								},
 								{
 									"key": "role",
-									"value": "ADMIN_HOTEL",
-									"type": "text"
+									"value": "CLIENT",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "hotel",
 									"value": "68180557fe90d20e3e26034a",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -95,12 +97,12 @@
 							"urlencoded": [
 								{
 									"key": "userLogin",
-									"value": "Plopez",
+									"value": "rlopez",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Plopez1.",
+									"value": "Alfred@88917",
 									"type": "text"
 								}
 							]
@@ -130,7 +132,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -187,7 +189,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -229,7 +231,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -271,7 +273,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -280,7 +282,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Hotel San Mateo",
+									"value": "Hotel San Cristobal",
 									"type": "text"
 								},
 								{
@@ -327,39 +329,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Hotel San Marcos",
-									"type": "text"
-								},
-								{
-									"key": "direction",
-									"value": "5ta A - 10 Calle Zona 1 Esquipulas, Chiquimula",
-									"type": "text"
-								},
-								{
-									"key": "category",
-									"value": "6",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Hotel acercanias de los mejores sitios turisticos de Esquipulas",
-									"type": "text"
-								},
-								{
-									"key": "telephone",
-									"value": "45120200",
-									"type": "text"
-								}
-							]
+							"mode": "formdata",
+							"formdata": []
 						},
 						"url": {
 							"raw": "localhost:2002/v1/hotel/updateHotel/68180503fe90d20e3e26032b",
@@ -384,7 +360,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -411,7 +387,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -437,7 +413,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -463,7 +439,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -484,15 +460,22 @@
 				},
 				{
 					"name": "getHotelsById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
 							"raw": "localhost:2002/v1/hotel/getHotels/68180503fe90d20e3e26032b",
 							"host": [
@@ -521,7 +504,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -556,7 +539,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -590,7 +573,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -623,7 +606,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -657,7 +640,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -708,7 +691,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{token}}",
+										"value": "Bearer{{token}}",
 										"type": "text"
 									}
 								],
@@ -760,7 +743,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{token}}",
+										"value": "Bearer{{token}}",
 										"type": "text"
 									}
 								],
@@ -812,7 +795,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{token}}",
+										"value": "Bearer{{token}}",
 										"type": "text"
 									}
 								],
@@ -843,7 +826,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{token}}",
+										"value": "Bearer{{token}}",
 										"type": "text"
 									}
 								],
@@ -870,7 +853,7 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "{{token}}",
+										"value": "Bearer{{token}}",
 										"type": "text"
 									}
 								],
@@ -903,7 +886,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -965,7 +948,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1027,7 +1010,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1058,7 +1041,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1087,7 +1070,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1141,7 +1124,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1173,7 +1156,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1216,7 +1199,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1257,7 +1240,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1313,7 +1296,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1371,7 +1354,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1397,7 +1380,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1429,7 +1412,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1456,7 +1439,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1513,7 +1496,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1539,7 +1522,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
@@ -1569,7 +1552,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "{{token}}",
+								"value": "Bearer{{token}}",
 								"type": "text"
 							}
 						],
