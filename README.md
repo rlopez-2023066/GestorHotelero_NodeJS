@@ -1,44 +1,74 @@
-# Gestor-Hotelero---VoidLin
+# 🏨 Sistema de Gestión Hotelera - CRUD de Hoteles
 
-🏨 Sistema de Gestión Hotelera – MERN Stack
+¡Bienvenidos a **HotelHub**!  
+Una aplicación web que representa el primer paso hacia una plataforma integral para la gestión hotelera en la nube.  
+Actualmente, este sistema se encuentra en desarrollo y **ya cuenta con una funcionalidad sólida para el manejo de hoteles** (¡sí, solo CRUD de hoteles por ahora... pero con estilo! 😉).
 
-En la actualidad, la digitalización de servicios es clave para brindar experiencias eficientes y satisfactorias tanto a usuarios como a administradores. Por ello, se propone el desarrollo de una aplicación web de gestión hotelera, una plataforma centralizada que permita el control y administración de hoteles, habitaciones y eventos asociados de manera eficiente, rápida y segura.
+---
 
-Este sistema permitirá a los usuarios realizar búsquedas inteligentes de hoteles 🏨, consultar disponibilidad de habitaciones 🛏️, realizar reservaciones 📅, y acceder a información detallada de eventos 🎉 organizados por cada hotel. Por otro lado, se brindará a los administradores de hoteles y de la plataforma herramientas intuitivas para gestionar reservas, usuarios, estadísticas 📊 y servicios complementarios.
+## ✨ ¿Qué hace esta app?
 
-Con un enfoque basado en el stack tecnológico MERN (MongoDB, Express.js, React, Node.js), este proyecto busca ofrecer una solución moderna, escalable y segura, orientada a mejorar la experiencia tanto del cliente como del personal administrativo.
+Este sistema permite:
 
-👨‍💻 Equipo de desarrollo:
+- 📥 **Crear** nuevos hoteles con todos sus datos relevantes (nombre, dirección, categoría, precios, comodidades... lo que sueñes).
+- 🧐 **Leer** la lista de hoteles registrados en la plataforma (¡incluso puedes buscar tus favoritos!).
+- 🔄 **Actualizar** la información de hoteles fácilmente.
+- ❌ **Eliminar** hoteles que ya no estén operativos o que simplemente... no lo lograron 😅.
 
-- Rene Alfredo López Castellanos (Scrum Master)
+---
 
-- Paolo Isaac Consuegra Martínez (Development Team)
+## 🚀 ¿Por qué lo hicimos?
 
-- Diego Antonio Marroquín Franco (Development Team)
+Porque sabíamos que el primer ladrillo de una gran plataforma es un CRUD bien hecho.  
+Queremos construir una solución sólida, eficiente y elegante para el sector hotelero, y este es solo el **inicio del viaje**.
 
-- Jose Luis Alejandro Estrada Hernández (Development Team)
+---
 
-- José David Retana Retana (Development Team)
+## 👥 Equipo de desarrollo
 
-===========================================================================
-===========================================================================
+Este proyecto fue desarrollado con pasión, sueño y mucho café por:
 
-🏨 Sistema de Gestión Hotelera – MERN Stack
+- 🧠 Rene Alfredo López Castellanos  
+- ⚙️ Paolo Isaac Consuegra Martinez  
+- 🔍 Diego Antonio Marroquín Franco  
+- 📊 José David Retana Retana  
+- 🧪 Jose Luis Alejandro Estrada Hernández  
 
-In today’s world, the digital transformation of services is essential to offer efficient and satisfactory experiences for both users and administrators. This project aims to develop a hotel management web application, serving as a centralized platform for efficiently managing hotels, rooms, and associated events.
+¡Orgullosos de haber creado esta base para un sistema que promete mucho más!
 
-The system will allow users to search for hotels 🏨, check room availability 🛏️, make reservations 📅, and view detailed information about scheduled events 🎉. Meanwhile, hotel and platform administrators will have access to intuitive tools for managing bookings, users, reports 📊, and additional services.
+---
 
-Built with the MERN stack (MongoDB, Express.js, React, Node.js), the project is designed to deliver a modern, scalable, and secure solution that enhances the experience of both clients and hotel staff.
+## 🛠️ Tecnologías utilizadas
 
-👨‍💻 Development Team:
+- ⚛️ **React.js** – Para construir una interfaz de usuario moderna y reactiva.
+- 🌐 **Express.js + Node.js** – Backend ágil y poderoso.
+- 🗃️ **MongoDB** – Base de datos NoSQL para un manejo dinámico de la información hotelera.
+- 🛡️ **JWT** – Seguridad y control de acceso (si ya está implementado).
+- 💻 **Axios** – Para conectar con el backend sin dramas.
 
-Rene Alfredo López Castellanos (Scrum Master)
+---
 
-Paolo Isaac Consuegra Martínez (Development Team)
+## ⚙️ Cómo ejecutar el proyecto
 
-Diego Antonio Marroquín Franco (Development Team)
+```bash
+# Clonar el repositorio
+git clone https://github.com/tu-usuario/nombre-del-repo.git
 
-Jose Luis Alejandro Estrada Hernández (Development Team)
+# Ir al directorio del proyecto
+cd nombre-del-repo
 
-José David Retana Retana (Development Team)
+# Instalar dependencias del backend
+cd backend
+npm install
+
+# Instalar dependencias del frontend
+cd ../frontend
+npm install
+
+# Ejecutar el backend
+cd ../backend
+npm start
+
+# En una nueva terminal, ejecutar el frontend
+cd ../frontend
+npm start
