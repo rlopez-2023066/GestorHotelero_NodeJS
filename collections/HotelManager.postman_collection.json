@@ -128,12 +128,23 @@
 				{
 					"name": "updateUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -185,12 +196,23 @@
 				{
 					"name": "updatePassword",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
@@ -227,14 +249,18 @@
 				{
 					"name": "deleteUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -269,14 +295,18 @@
 				{
 					"name": "addHotel",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -325,14 +355,18 @@
 				{
 					"name": "updateHotel",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -356,14 +390,18 @@
 				{
 					"name": "deleteHotel",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/hotel/deleteHotel/68180503fe90d20e3e26032b",
 							"host": [
@@ -383,14 +421,18 @@
 				{
 					"name": "listHotel",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/hotel/getHotels",
 							"host": [
@@ -409,14 +451,18 @@
 				{
 					"name": "getHotelZA",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/hotel/getHotelZA",
 							"host": [
@@ -435,14 +481,18 @@
 				{
 					"name": "getHotelAZ",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/hotel/getHotelAZ",
 							"host": [
@@ -464,14 +514,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -492,6 +546,38 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -500,14 +586,18 @@
 				{
 					"name": "add Event",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"name\": \"Cena De Graduación \",\r\n  \"description\": \"Solo un servicio agregado\",\r\n  \"type\": \"Conferencia\",\r\n  \"startTime\": \"2025-12-25T10:00:00Z\",\r\n  \"endTime\": \"2025-12-25T12:00:00Z\",\r\n  \"hotel\": \"6818050dfe90d20e3e26032f\",\r\n  \"room\": \"68180ae8c05ac69389838610\",\r\n  \"user\": \"6816b410465350f132494e8c\",\r\n  \"services\": [\r\n    {\r\n      \"serviceId\": \"6818062ffe90d20e3e260363\",\r\n      \"quantity\":7\r\n    }\r\n  ]\r\n}\r\n\r\n",
@@ -535,14 +625,18 @@
 				{
 					"name": "Delete Event",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
@@ -569,14 +663,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
@@ -602,14 +700,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
@@ -636,14 +738,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -664,13 +770,6 @@
 								"v1",
 								"events",
 								"listEventByHotel"
-							],
-							"query": [
-								{
-									"key": "hotel",
-									"value": "6816b7afa5abebf00f908c5a",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -687,14 +786,18 @@
 						{
 							"name": "addReservation",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "POST",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer{{token}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -739,14 +842,18 @@
 						{
 							"name": "updateReservation",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer{{token}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
@@ -791,14 +898,18 @@
 						{
 							"name": "deleteReservacion",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer{{token}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": []
@@ -822,14 +933,18 @@
 						{
 							"name": "listReservationHotelId",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer{{token}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "localhost:2002/v1/reservation/listReservationHotel/6816b7afa5abebf00f908c5a",
 									"host": [
@@ -849,14 +964,18 @@
 						{
 							"name": "getReservationsByUser",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer{{token}}",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"url": {
 									"raw": "localhost:2002/v1/reservation/getReservationsByUser",
 									"host": [
@@ -882,14 +1001,18 @@
 				{
 					"name": "addRoom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -944,14 +1067,18 @@
 				{
 					"name": "updateRoom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1006,14 +1133,18 @@
 				{
 					"name": "deleteRoom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
@@ -1037,14 +1168,18 @@
 				{
 					"name": "getRoom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/rooms/getRoom",
 							"host": [
@@ -1066,14 +1201,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1120,14 +1259,18 @@
 				{
 					"name": "getRoomById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/rooms/getRoomById/68180c069d6b3708d8002e1c",
 							"host": [
@@ -1152,14 +1295,18 @@
 				{
 					"name": "addInvoiceRoom",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1195,14 +1342,18 @@
 				{
 					"name": "addInvoiceEvent",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1236,14 +1387,18 @@
 				{
 					"name": "addService",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1292,14 +1447,18 @@
 				{
 					"name": "updateService",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1350,14 +1509,18 @@
 				{
 					"name": "listServices",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/service/getService",
 							"host": [
@@ -1376,14 +1539,18 @@
 				{
 					"name": "deleteService",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/service/deleteService/68180a3ec05ac693898385fc",
 							"host": [
@@ -1408,14 +1575,18 @@
 				{
 					"name": "deleteUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/admin/deleteUser/6817df574eceabef46fc20fc",
 							"host": [
@@ -1435,14 +1606,18 @@
 				{
 					"name": "updateUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1492,14 +1667,18 @@
 				{
 					"name": "getUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/admin/getAllUsers",
 							"host": [
@@ -1518,14 +1697,18 @@
 				{
 					"name": "getUserById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
 							"raw": "localhost:2002/v1/admin/getUserById/6817cbffe352f6db26483c83",
 							"host": [
@@ -1548,14 +1731,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
