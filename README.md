@@ -1,44 +1,88 @@
-# GestorHotelero_NodeJS
+# 🏨 Sistema de Gestión Hotelera
 
-🏨 Sistema de Gestión Hotelera – MERN Stack
+Este proyecto consiste en el desarrollo de una **aplicación web** centralizada para la gestión hotelera. La plataforma permite gestionar hoteles, habitaciones, eventos y operaciones relacionadas, tanto para usuarios como para administradores de hoteles y de la plataforma.
 
-En la actualidad, la digitalización de servicios es clave para brindar experiencias eficientes y satisfactorias tanto a usuarios como a administradores. Por ello, se propone el desarrollo de una aplicación web de gestión hotelera, una plataforma centralizada que permita el control y administración de hoteles, habitaciones y eventos asociados de manera eficiente, rápida y segura.
+---
 
-Este sistema permitirá a los usuarios realizar búsquedas inteligentes de hoteles 🏨, consultar disponibilidad de habitaciones 🛏️, realizar reservaciones 📅, y acceder a información detallada de eventos 🎉 organizados por cada hotel. Por otro lado, se brindará a los administradores de hoteles y de la plataforma herramientas intuitivas para gestionar reservas, usuarios, estadísticas 📊 y servicios complementarios.
+## 📌 Contexto
 
-Con un enfoque basado en el stack tecnológico MERN (MongoDB, Express.js, React, Node.js), este proyecto busca ofrecer una solución moderna, escalable y segura, orientada a mejorar la experiencia tanto del cliente como del personal administrativo.
+El objetivo principal es crear una herramienta digital eficiente que permita a los usuarios:
 
-👨‍💻 Equipo de desarrollo:
+- Buscar hoteles.
+- Visualizar habitaciones disponibles.
+- Reservar estadías.
+- Acceder a información sobre eventos programados en hoteles registrados.
 
-- Rene Alfredo López Castellanos (Scrum Master)
+Además, permite a los administradores controlar y analizar el funcionamiento de los hoteles de manera precisa y organizada.
 
-- Paolo Isaac Consuegra Martínez (Development Team)
+---
 
-- Diego Antonio Marroquín Franco (Development Team)
+## 🚀 Funcionalidades Principales
 
-- Jose Luis Alejandro Estrada Hernández (Development Team)
+### 🏢 Gestión de Hoteles y Habitaciones
 
-- José David Retana Retana (Development Team)
+- Registro y administración de hoteles con detalles como dirección, categoría, precios y comodidades.
+- Gestión del inventario de habitaciones: tipo, capacidad y disponibilidad por fechas.
 
-===========================================================================
-===========================================================================
+### 🎉 Gestión de Eventos
 
-🏨 Sistema de Gestión Hotelera – MERN Stack
+- Programación, modificación y cancelación de eventos (bodas, conferencias, reuniones, etc.).
+- Asignación de recursos y servicios adicionales según el tipo de evento.
 
-In today’s world, the digital transformation of services is essential to offer efficient and satisfactory experiences for both users and administrators. This project aims to develop a hotel management web application, serving as a centralized platform for efficiently managing hotels, rooms, and associated events.
+### 📊 Generación de Informes
 
-The system will allow users to search for hotels 🏨, check room availability 🛏️, make reservations 📅, and view detailed information about scheduled events 🎉. Meanwhile, hotel and platform administrators will have access to intuitive tools for managing bookings, users, reports 📊, and additional services.
+- Informes sobre la demanda hotelera.
+- Estadísticas de ocupación y rendimiento.
+- Reportes detallados de reservaciones realizadas.
 
-Built with the MERN stack (MongoDB, Express.js, React, Node.js), the project is designed to deliver a modern, scalable, and secure solution that enhances the experience of both clients and hotel staff.
+---
 
-👨‍💻 Development Team:
+## 👤 Funcionalidades para Usuarios
 
-Rene Alfredo López Castellanos (Scrum Master)
+- Registro e inicio de sesión.
+- Búsqueda y reserva de hoteles y habitaciones.
+- Visualización de disponibilidad y eventos.
+- Acceso al historial de reservaciones y servicios utilizados.
+- Edición o eliminación de cuenta personal.
+- Interfaz clara y experiencia fluida de uso.
 
-Paolo Isaac Consuegra Martínez (Development Team)
+---
 
-Diego Antonio Marroquín Franco (Development Team)
+## 🛠 Funcionalidades para Administradores de Plataforma
 
-Jose Luis Alejandro Estrada Hernández (Development Team)
+- Gestión completa de usuarios registrados.
+- CRUD de hoteles con información detallada.
+- Acceso a reportes y estadísticas sobre demanda y rendimiento.
 
-José David Retana Retana (Development Team)
+---
+
+## 🏨 Funcionalidades para Administradores de Hotel
+
+- Visualización de todas las reservaciones realizadas en su hotel.
+- Consulta de usuarios con reservaciones activas o pasadas.
+- Verificación en tiempo real de disponibilidad de habitaciones.
+- Generación de facturas al finalizar la estadía (incluyendo cargos adicionales por servicios).
+
+---
+
+## ⚙️ Consideraciones Técnicas
+
+- Validaciones integradas para garantizar la integridad de los datos.
+- Enfoque en usabilidad para todos los tipos de usuario.
+- Arquitectura limpia y organizada para una fácil escalabilidad y mantenimiento.
+
+---
+
+## 👥 Equipo de Desarrollo
+
+Este proyecto fue desarrollado en equipo como parte del ciclo formativo.
+
+- **Rene Alfredo López Castellanos** – *Scrum Master*
+- **Paolo Isaac Consuegra Martínez** – *Development Team Leader*
+- **Diego Antonio Marroquín Franco** – *Development Team*
+- **Jose Luis Alejandro Estrada Hernández** – *Development Team*
+- **José David Retana Retana** – *Development Team*
+
+---
+
+> Proyecto académico colaborativo desarrollado con enfoque SCRUM para la entrega final del bimestre. ¡Gracias por visitar!
