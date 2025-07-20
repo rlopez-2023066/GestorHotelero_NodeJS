@@ -1,4 +1,4 @@
-# Gestor-Hotelero---VoidLin
+# GestorHotelero_NodeJS
 
 🏨 Sistema de Gestión Hotelera – MERN Stack
 
